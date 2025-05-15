@@ -5,7 +5,10 @@ export enum RoleCTF {
 
 // Spawn and Swamp roles
 export enum RoleSAS {
-  Sample = 201,
+  Harvester = 201,
+  Attacker,
+  RangedAttacker,
+  Healer,
 }
 
 // Collect and Control roles

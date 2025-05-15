@@ -1,9 +1,13 @@
 import { getCore } from './Core';
-import { runSample } from './managers/Sample';
+import { runHarvest } from './managers/Harvest';
+import { runMilitary } from './managers/Military';
+import { runSpawn } from './managers/Spawn';
 
 export function loop() {
   const core = getCore();
   core.run();
 
-  runSample(core);
+  runHarvest(core);
+  runMilitary(core);
+  runSpawn(core);
 }

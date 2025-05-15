@@ -44,7 +44,7 @@ export function getMaxLevelHealer(energy: number, maxLevel = 25): number {
   return getMaxLevel(energy, getHealerBody, maxLevel);
 }
 
-export function getBlinkyBody(level: number): BodyPartConstant[] {
+export function getRangedAttackerBody(level: number): BodyPartConstant[] {
   if (level > 25) {
     level = 25;
   }
@@ -53,11 +53,11 @@ export function getBlinkyBody(level: number): BodyPartConstant[] {
   return body;
 }
 
-export function getMaxLevelBlinky(energy: number, maxLevel = 25): number {
-  return getMaxLevel(energy, getBlinkyBody, maxLevel);
+export function getMaxLevelRangedAttacker(energy: number, maxLevel = 25): number {
+  return getMaxLevel(energy, getRangedAttackerBody, maxLevel);
 }
 
-export function getFighterBody(level: number): BodyPartConstant[] {
+export function getMeleeAttackerBody(level: number): BodyPartConstant[] {
   if (level > 25) {
     level = 25;
   }
@@ -66,8 +66,8 @@ export function getFighterBody(level: number): BodyPartConstant[] {
   return body;
 }
 
-export function getMaxLevelFighter(energy: number, maxLevel = 25): number {
-  return getMaxLevel(energy, getFighterBody, maxLevel);
+export function getMaxLevelMeleeAttacker(energy: number, maxLevel = 25): number {
+  return getMaxLevel(energy, getMeleeAttackerBody, maxLevel);
 }
 
 export function getHaulerBody(level: number): BodyPartConstant[] {
