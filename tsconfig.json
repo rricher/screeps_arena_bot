@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "lib": [
+      "es2020"
+    ],
+    "target": "es2020",
+    "moduleResolution": "node",
+    "outDir": "./dist/",
+    "baseUrl": "./src/",
+    "sourceMap": false,
+    "strict": true,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/common/@types",
+      "./node_modules/@types/screeps-arena/dist"
+    ],
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "./node_modules/",
+    "./dist/"
+  ]
+}
