@@ -1,10 +1,13 @@
+import { moveAsAttacker } from 'common/lib/creep';
 import { Creep, StructureSpawn } from 'game/prototypes';
 import { Core } from '../Core';
 
 export function run(creep: Creep, core: Core) {
-  const target = creep.findClosestByRange(core.enemyCreeps);
+  const target = creep.findClosestByRange(core.hostileCreeps);
   if (target) {
-    creep.moveTo(target);
+    if (!moveAsAttacker(creep, core, target)) {
+      creep.moveTo(target);
+    }
     attack(creep, target);
     return;
   }
@@ -16,9 +19,9 @@ export function run(creep: Creep, core: Core) {
 }
 
 function attack(creep: Creep, target: Creep | StructureSpawn) {
-  if (creep.getRangeTo(target) <= 3) {
-    creep.rangedAttack(target);
-  } else if (creep.getRangeTo(target) <= 1) {
+  if (creep.getRangeTo(target) <= 1) {
     creep.rangedMassAttack();
+  } else if (creep.getRangeTo(target) <= 3) {
+    creep.rangedAttack(target);
   }
 }

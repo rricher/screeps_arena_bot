@@ -1,7 +1,9 @@
 import { Core as CommonCore } from 'common/Core';
-import { RESOURCE_ENERGY } from 'game/constants';
+import { creepHasPart } from 'common/lib/creep';
+import { ATTACK, HEAL, RANGED_ATTACK, RESOURCE_ENERGY, WORK } from 'game/constants';
 import {
   ConstructionSite,
+  Creep,
   StructureContainer,
   StructureExtension,
   StructureRampart,
@@ -30,6 +32,7 @@ export class Core extends CommonCore {
   public enemyRamparts: StructureRampart[] = [];
   public enemyConstrSites: ConstructionSite[] = [];
   public containers: StructureContainer[] = [];
+  public hostileCreeps: Creep[] = [];
 
   public run() {
     super.run();
@@ -56,6 +59,14 @@ export class Core extends CommonCore {
 
     this.containers = getObjectsByPrototype(StructureContainer).filter(
       c => c.store.getUsedCapacity(RESOURCE_ENERGY) || 0
+    );
+
+    this.hostileCreeps = this.enemyCreeps.filter(
+      creep =>
+        creepHasPart(creep, ATTACK) ||
+        creepHasPart(creep, RANGED_ATTACK) ||
+        creepHasPart(creep, HEAL) ||
+        creepHasPart(creep, WORK)
     );
   }
 

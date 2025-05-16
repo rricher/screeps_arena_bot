@@ -53,7 +53,5 @@ export function runTransferEnergy(creep: Creep, core: Core) {
     } else if (result === ERR_NOT_IN_RANGE) {
       creep.moveTo(core.mySpawn);
     }
-  } else {
-    if (creep.getRangeTo({ x: core.mySpawn.x, y: core.mySpawn.y }) > 1) creep.moveTo(core.mySpawn);
-  }
+  } else if (creep.getRangeTo({ x: core.mySpawn.x, y: core.mySpawn.y }) > 1) creep.moveTo(core.mySpawn);
 }
